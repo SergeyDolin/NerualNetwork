@@ -27,8 +27,14 @@ namespace NerualNetwork
             {
                 sum += inputs[i] * Weights[i];
             }
-
-            Output = Sigmoid(sum);
+            if (NeuType != NeuronType.Input)
+            {
+                Output = Sigmoid(sum);
+            }
+            else
+            {
+                Output = sum;
+            }
             return Output;
         }
 
