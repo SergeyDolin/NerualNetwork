@@ -8,6 +8,9 @@ namespace NerualNetwork
 {
     public class Nerual_Network
     {
+        static void Main(string[] args) // static with a void (or int) return type
+        {
+        }
         public Topology Topology { get; }
         public List<Layer> layers { get; }
 
