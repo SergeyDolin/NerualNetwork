@@ -37,6 +37,15 @@ namespace NerualNetwork
             return 1.0 / (1.0 + Math.Pow(Math.E, -x));
         }
 
+        public void SetWeigths(params double[] weigths)
+        {
+            // TODO: Удалить после обучения сети
+            for(int i = 0; i < weigths.Length; i++)
+            {
+                Weights[i] = weigths[i];
+            }
+        }
+
         public override string ToString()
         {
             return Output.ToString();
