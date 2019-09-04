@@ -41,24 +41,27 @@ namespace NerualNetwork
         public double Learn(double[] expected, double[,] inputs, int epoch)
         {
             var error = 0.0;
-            for (int j = 0; j < expected.Length; j++)
+            for (int i = 0; i < epoch; i++)
             {
-                var output = expected[j];
-                var input = GetRow(inputs, j);
+                for (int j = 0; j < expected.Length; j++)
+                {
+                    var output = expected[j];
+                    var input = GetRow(inputs, j);
 
-                error += BackPropagation(output, input);
+                    error += BackPropagation(output, input);
+                }
             }
-            return error / epoch;
+
+            var result = error / epoch;
+            return result;
         }
 
-        public double[]GetRow(double[,] matrix, int row)
+        public static double[] GetRow(double[,] matrix, int row)
         {
-            var colums = matrix.GetLength(1);
-            var array = new double[colums];
-            for(int i = 0; i < colums; i++)
-            {
+            var columns = matrix.GetLength(1);
+            var array = new double[columns];
+            for (int i = 0; i < columns; ++i)
                 array[i] = matrix[row, i];
-            }
             return array;
         }
 
